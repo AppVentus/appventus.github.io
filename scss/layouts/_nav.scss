@@ -1,0 +1,36 @@
+#nav {
+    background-color: $gray-lighter;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        @include display (flex);
+    }
+
+    li {
+        @include flex (1);
+
+        + li {
+            margin-top: 0;
+        }
+    }
+
+    a {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 20px;
+        padding: 5px 10px;
+        display: block;
+        color: #000;
+        font-family: $font-family-sans-serif;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<span class="token selector">.nav</span> {
+    <span class="token selector">> li</span> {
+        <span class="token selector">+ li</span> {
+            <span class="token property">margin-left</span>: 20px;
+
+            <span class="token atrule">@media</span> (<span class="token property">max-width</span>: 768px) {
+                <span class="token property">margin-left</span>: 10px;
+            }
+        }
+    }
+}

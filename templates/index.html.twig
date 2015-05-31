@@ -1,0 +1,66 @@
+{% set summary = {
+
+    'html': [
+        'synthax',
+        'indentation',
+        'bootstrap',
+    ],
+
+    'twig': [
+        'synthax',
+        'indentation',
+        'comments',
+        'blockDeclaration',
+        'includes',
+        'content',
+        'filesNaming',
+        'variables',
+    ],
+
+    'css': [
+        'synthax',
+        'indentation',
+        'propertyOrder',
+        'responsiveUsage',
+        'colors',
+        'usage',
+    ],
+
+    'scss': [
+        'indentation',
+        'operations',
+        'colors',
+        'variables',
+        'prefix',
+        'responsiveUsage',
+    ],
+} %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/components.css">
+        <link rel="stylesheet" href="css/bricks.css">
+        <link rel="stylesheet" href="css/layouts.css">
+        <link rel="stylesheet" href="css/ugly.css">
+    </head>
+
+    <body>
+        <div id="body">
+            {% include '_header.html.twig' %}
+
+            {% include '_nav.html.twig' with {
+                'summary': summary,
+            } %}
+
+            {% include '_content.html.twig' with {
+                'summary': summary,
+            } %}
+        </div>
+
+        <script src="bower_components/prism/prism.js"></script>
+    </body>
+</html>

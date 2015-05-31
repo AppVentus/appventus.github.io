@@ -1,1 +1,578 @@
-Hello World
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/components.css">
+        <link rel="stylesheet" href="css/bricks.css">
+        <link rel="stylesheet" href="css/layouts.css">
+        <link rel="stylesheet" href="css/ugly.css">
+    </head>
+
+    <body>
+        <div id="body">
+            <header id="header">
+    <div>
+        <h1 class="text-uppercase">
+            <strong>AppVentus front-end code guide</strong>
+        </h1>
+
+        <p class="h5">
+            Bunch of standards for html, css & js
+        </p>
+    </div>
+</header>
+            <nav id="nav">
+    <ul>
+        <li>
+            <a href="#introduction">introduction</a>
+        </li>
+
+                    <li>
+                <a href="#html">html</a>
+            </li>
+                    <li>
+                <a href="#twig">twig</a>
+            </li>
+                    <li>
+                <a href="#css">css</a>
+            </li>
+                    <li>
+                <a href="#scss">scss</a>
+            </li>
+            </ul>
+</nav>
+            <main>
+    <section class="section" id="introduction">
+        <h1 class="section-title">
+            Introduction
+        </h1>
+
+        <div class="code-section-wrapper">
+            <div class="code-section" id="introduction-introduction">
+            <div class="explanation">
+            <div>
+                <p>
+    This website collect numbers of rules and examples about the code should be written, architectured and thought for the AppVentus front-end team & each AppVentus project.
+</p>
+
+<p>
+    For each statement the idea is to keep a code coherent in order to make sure everyone's efficency. Our goal is to keep clear and easy to maintain. Modulable and Scalable should be the philosophy in order to avoid structural problems and makes components movable to any other project.
+</p>
+
+<p>
+    Of course, any rule of this document can be discussed, <strong>feel free to improve any following statements</strong>.
+</p>            </div>
+        </div>
+    
+    </div>        </div>
+    </section>
+
+            <section class="section" id="html">
+            <h1 class="section-title">
+                html
+            </h1>
+
+            <div class="code-section-wrapper">
+                                    <div class="code-section" id="html-synthax">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Synthax</h3>
+
+<ul>
+    <li>
+        Always use double quotes, never single quotes, on attributes.
+    </li>
+
+    <li>
+        Don't include a trailing slash in self-closing elements—the HTML5 spec says they're optional.
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-html">&lt;<span class="token tag">ul</span>&gt;
+    &lt;<span class="token tag">li</span>&gt;
+        &lt;<span class="token tag">img</span>&nbsp;<span class="token attr-name">src</span>=<span class="token attr-value">"image.png"</span>&gt;
+    &lt;/<span class="token tag">li</span>&gt;
+
+    &lt;<span class="token tag">li</span>&gt;
+        &lt;<span class="token tag">a</span>&nbsp;<span class="token attr-name">href</span>=<span class="token attr-value">"#"</span>&gt;see more&lt;/<span class="token tag">a</span>&gt;
+    &lt;/<span class="token tag">li</span>&gt;
+&lt;/<span class="token tag">ul</span>&gt;</code></pre></div>    </div>                                    <div class="code-section" id="html-indentation">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Indentation</h3>
+
+<ul>
+    <li>
+        Use 4 spaces for indentation — they're the only way to guarantee code renders the same in any environment.
+    </li>
+
+    <li>
+        Never indent inline a native <code>display: block;</code> element (<code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>). Only write inline the natives <code>display: inline;</code> or <code>display: inline-block;</code> in order to clarify html semantics.
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-html">&lt;<span class="token tag">p</span>&gt;
+<span class="token comment">&#183;&#183;&#183;&#183;</span>lorem ipsum&lt;<span class="token tag">span</span>&gt;dolor&lt;/<span class="token tag">span</span>&gt;
+&lt;/<span class="token tag">p</span>&gt;</code></pre></div>    </div>                                    <div class="code-section" id="html-bootstrap">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Using Bootstrap grid</h3>
+
+<ul>
+    <li>
+        Any <code>.col-*-*</code> must have <code>.row</code> as direct parent.
+    </li>
+
+    <li>
+        Avoid usage of any other class or id on <code>.row</code> and <code>.col-*-*</code> elements.
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-html"><span class="token comment">&lt;!-- Not so good --&gt;</span>
+&lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"pod"</span>&gt;
+    &lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"col-xs-8 pod-content"</span>&gt;
+        lorem
+    &lt;/<span class="token tag">div</span>&gt;
+
+    &lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"col-xs-4 pod-sidebar"</span>&gt;
+        ipsum
+    &lt;/<span class="token tag">div</span>&gt;
+&lt;/<span class="token tag">div</span>&gt;
+
+<span class="token comment">&lt;!-- Much better --&gt;</span>
+&lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"pod"</span>&gt;
+    &lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"row"</span>&gt;
+        &lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"col-xs-8"</span>&gt;
+            &lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"pod-content"</span>&gt;
+                lorem
+            &lt;/<span class="token tag">div</span>&gt;
+        &lt;/<span class="token tag">div</span>&gt;
+
+        &lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"col-xs-8"</span>&gt;
+            &lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"pod-sidebar"</span>&gt;
+                ipsum
+            &lt;/<span class="token tag">div</span>&gt;
+        &lt;/<span class="token tag">div</span>&gt;
+    &lt;/<span class="token tag">div</span>&gt;
+&lt;/<span class="token tag">div</span>&gt;</code></pre></div>    </div>                            </div>
+        </section>
+            <section class="section" id="twig">
+            <h1 class="section-title">
+                twig
+            </h1>
+
+            <div class="code-section-wrapper">
+                                    <div class="code-section" id="twig-synthax">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Synthax</h3>
+
+<ul>
+    <li>
+        Space between after entering delimiters (<code><span class="token tag">&#123;&#123;</span></code> or <code><span class="token tag">&#123;%</span></code>) and before ending delimiters (<code>&#125;&#125;</code> or <code><span class="token tag">%&#125;</span></code>).
+    </li>
+
+    <li>
+        Reminds into the <code><span class="token tag">&#123;%</span> endblock <span class="token tag">%&#125;</span></code> tag the block's name.
+    </li>
+
+    <li>
+        For filters usage, don’t use spaces after and before the filter marker (<code>|</code>)
+    </li>
+
+    <li>
+        Use space between the concatenate operator (<code>~</code>)
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-twig">&lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"user"</span>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="token tag">&#123;&#123;</span> user.firstname|trim <span class="token tag">~</span>&nbsp;<span class="token attr-value">' '</span>&nbsp;<span class="token tag">~</span>&nbsp;user.lastname|trim <span class="token tag">&#125;&#125;</span><br>&lt;/<span class="token tag">div</span>&gt;</code></pre></div>    </div>                                    <div class="code-section" id="twig-indentation">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Indentation</h3>
+
+<ul>
+    <li>
+        Indent twig tags as any markup element (without carring about de processed markup indentation).
+    </li>
+
+    <li>
+        Never indent twig tags like inline html elements.
+    </li>
+
+    <li>
+        Blocks into html tag as attributes can be inline
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-twig">&lt;<span class="token tag">ul</span>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="token tag">&#123;%</span>&nbsp;<span class="token keyword">for</span> item&nbsp;<span class="token keyword">in</span> items <span class="token tag">%&#125;</span><br>        &lt;<span class="token tag">li</span><span class="token tag">&#123;%</span>&nbsp;<span class="token keyword">if</span> loop.first <span class="token tag">%&#125;</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"first"</span><span class="token tag">&#123;%</span>&nbsp;<span class="token keyword">endif</span>&nbsp;<span class="token tag">%&#125;</span>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="token tag">&#123;&#123;</span> item.title <span class="token tag">&#125;&#125;</span><br>        &lt;/<span class="token tag">li</span>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="token tag">&#123;%</span>&nbsp;<span class="token keyword">endfor</span><span class="token tag">%&#125;</span><br>&lt;/<span class="token tag">ul</span>&gt;</code></pre></div>    </div>                                    <div class="code-section" id="twig-comments">
+            <div class="explanation">
+            <div>
+                <p>
+    Prefer twig comments instead of html comment in order to not print out into the browser.
+</p>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-twig"><span class="token comment">&#123;# Profile content #&#125;</span>
+&lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">id</span>=<span class="token attr-value">"profile"</span>&gt;
+    ...
+&lt;/<span class="token tag">div</span>&gt;</code></pre></div>    </div>                                    <div class="code-section" id="twig-blockDeclaration">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Block declaration</h3>
+
+<ul>
+    <li>
+        Reminds into the endblock tag the name of block defined
+    </li>
+
+    <li>
+        Start & end block should be both on the same line when it's markup free
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-twig"><span class="token tag">&#123;&#123;</span>&nbsp;<span class="token keyword">block</span> content <span class="token tag">&#125;&#125;</span><span class="token tag">&#123;&#123;</span>&nbsp;<span class="token keyword">endblock</span> content <span class="token tag">&#125;&#125;</span></code></pre></div>    </div>                                    <div class="code-section" id="twig-includes">
+            <div class="explanation">
+            <div>
+                <p>
+    For includes, in case of multiple variables commited with the include indent it on serveral lines likes arrays.
+</p>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-twig"><span class="token tag">&#123;%</span>&nbsp;<span class="token keyword">include</span><span class="token attr-value">'_nav.html.twig'</span>&nbsp;<span class="token keyword">with</span> &#123;
+    <span class="token attr-value">'summary'</span>: summary,
+&#125; <span class="token tag">%&#125;</span></code></pre></div>    </div>                                    <div class="code-section" id="twig-content">
+            <div class="explanation">
+            <div>
+                <ul>
+    <li>
+        Avoid javascript into twig templates.
+    </li>
+
+    <li>
+        Avoid "static string”, rather use translate keys.
+    </li>
+
+    <li>
+        Use <code>asset()</code> function for images includes.
+    </li>
+
+    <li>
+        Use assetic for stylesheet includes.
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-twig">&lt;<span class="token tag">img</span>&nbsp;<span class="token attr-name">src</span>=<span class="token attr-value">"<span class="token tag">&#123;&#123;</span> asset('logo.png') <span class="token tag">&#125;&#125;</span>"</span>&gt;</code></pre></div>    </div>                                    <div class="code-section" id="twig-filesNaming">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">File Naming</h3>
+
+<ul>
+    <li>
+        Use camelCase, not underscores, for files naming.
+    </li>
+
+    <li>
+        Prefix with "_" partials files as any template that can not be rendered stand-alone.
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-twig"><span class="token tag">&#123;%</span>&nbsp;<span class="token keyword">include</span>&nbsp;<span class="token attr-value">'_header.html.twig'</span>&nbsp;<span class="token tag">%&#125;</span></code></pre></div>    </div>                                    <div class="code-section" id="twig-variables">
+            <div class="explanation">
+            <div>
+                <p>
+    Use camelCase, not underscores, for variable naming.
+</p>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-twig"><span class="token tag">&#123;%</span>&nbsp;<span class="token keyword">set</span> userFullName = user.firstName&nbsp;<span class="token tag">~</span>&nbsp;<span class="token attr-value">' '</span>&nbsp;<span class="token tag">~</span>&nbsp;user.lastName <span class="token tag">%&#125;</span>
+
+&lt;<span class="token tag">div</span>&nbsp;<span class="token attr-name">class</span>=<span class="token attr-value">"user"</span>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="token tag">&#123;&#123;</span> userFullName <span class="token tag">&#125;&#125;</span><br>&lt;/<span class="token tag">div</span>&gt;</code></pre></div>    </div>                            </div>
+        </section>
+            <section class="section" id="css">
+            <h1 class="section-title">
+                css
+            </h1>
+
+            <div class="code-section-wrapper">
+                                    <div class="code-section" id="css-synthax">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Synthax</h3>
+
+<ul>
+    <li>
+        Place closing braces of declaration blocks on a new line.
+    </li>
+
+    <li>
+        Include one space after <code>:</code> for each declaration.
+    </li>
+
+    <li>
+        Each declaration should appear on its own line for more accurate error reporting.
+    </li>
+
+    <li>
+        End all declarations with a semi-colon. The last declaration's is optional, but your code is more error prone without it.
+    </li>
+
+    <li>
+        Comma-separated property values should include a space after each comma (e.g., <code>box-shadow</code>).
+    </li>
+
+    <li>
+        Don't prefix property values or color parameters with a leading zero (e.g., <code>.5</code> instead of <code>0.5</code> and <code>-.5px</code> instead of <code>-0.5px</code>).
+    </li>
+
+    <li>
+        Quote attribute values in selectors, e.g., <code>input[type="text"]</code>.
+    </li>
+
+    <li>
+        <strong class="text-underline">Never do</strong> inline declarations.
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-css">input {
+    [type="text"] {
+        opacity: .8;
+        border-width: 1px;
+        border-style: solid;
+        border-color: $gray;
+        @include box-shadow (0 0 2px 3px $anthracite);
+    }
+}</code></pre></div>    </div>                                    <div class="code-section" id="css-indentation">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Indentation</h3>
+
+<ul>
+    <li>
+        Use 4 spaces for indentation.
+    </li>
+
+    <li>
+        When grouping selectors, keep individual selectors to a single line.
+    </li>
+
+    <li>
+        Include one space before the opening brace of declaration blocks for legibility.
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-css">h1,
+.h1 {
+&#183;&#183;&#183;&#183;margin-bottom:&#183;0;
+&#183;&#183;&#183;&#183;font-size:&#183;4em;
+&#183;&#183;&#183;&#183;text-shadow:&#183;none;
+}</code></pre></div>    </div>                                    <div class="code-section" id="css-propertyOrder">
+            <div class="explanation">
+            <div>
+                <p>
+    Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values. Common overused shorthand properties include:
+</p>
+
+<ul>
+    <li>padding</li>
+
+    <li>margin</li>
+
+    <li>font</li>
+
+    <li>background</li>
+
+    <li>border</li>
+
+    <li>border-radius</li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-css">/* Not that good */
+.container {
+    margin: 10px auto 0;
+}
+
+/* Much better */
+.container {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}</code></pre></div>    </div>                                    <div class="code-section" id="css-responsiveUsage">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Responsive Usages</h3>
+
+<ul>
+    <li>
+        Place media queries as close to their relevant rule sets whenever possible.
+    </li>
+
+    <li>
+        In media queries specify media type (like <code>all</code> or <code>screen</code>) only if necessary
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-css">.nav > li + li {
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .nav > li + li {
+        margin-left: 10px;
+    }
+}</code></pre></div>    </div>                                    <div class="code-section" id="css-colors">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Using colors</h3>
+
+<ul>
+    <li>
+        use hexa or rgba formats for colors definition.
+    </li>
+
+    <li>
+        Use shorthand hex values where available (e.g., <code>#fff</code> instead of <code>#ffffff</code>.)
+    </li>
+</ul>
+            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-css">fieldset {
+    background-color: rgba(0, 0, 0, .5);
+}</code></pre></div>    </div>                                    <div class="code-section" id="css-usage">
+            <div class="explanation">
+            <div>
+                <ul>
+    <li>
+        Use id’s for layout purposes only
+    </li>
+
+    <li>
+        Avoid specifying units for zero values (e.g., <code>margin-top: 0;</code> instead of <code>margin-top: 0px;</code>).
+    </li>
+</ul>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-css">/* Not that good */
+ul {
+    margin-bottom: 0px;
+}
+
+/* Much better */
+ul {
+    margin-bottom: 0;
+}</code></pre></div>    </div>                            </div>
+        </section>
+            <section class="section" id="scss">
+            <h1 class="section-title">
+                scss
+            </h1>
+
+            <div class="code-section-wrapper">
+                                    <div class="code-section" id="scss-indentation">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Indentation</h3>
+
+<p>
+    Use sass and less nesting for every selectors in order to make your selector deepness clear and loud. If you indent more than three time for a nested selected, your selector deepness should be to strong and your code design must be wrong.
+</p>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-scss"><span class="token selector">.h1</span> {
+    <span class="token selector">.small</span> {
+        <span class="token property">margin-top</span>: 15px;
+    }
+}</code></pre></div>    </div>                                    <div class="code-section" id="scss-operations">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Operations</h3>
+
+<p>
+    For improved readability, wrap all math operations in parentheses with a single space between values, variables, and operators.
+</p>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-scss"><span class="token selector">.pod</span> {
+    <span class="token property">margin-top</span>: (10px + 5px);
+}</code></pre></div>    </div>                                    <div class="code-section" id="scss-colors">
+            <div class="explanation">
+            <div>
+                <p>
+    Use variables for colors references.
+</p>
+            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-scss">$black: #000;
+$black-fade: transparentize($black, .5);
+
+<span class="token selector">fieldset</span> {
+    <span class="token property">background-color</span>: $black-fade;
+}</code></pre></div>    </div>                                    <div class="code-section" id="scss-variables">
+            <div class="explanation">
+            <div>
+                <p>
+    Parameters Variables naming conventions (using camelCase): <code>$element-subelement_property-_variant</code>.
+</p>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-scss">$h1-small_fontSize: .85em;
+
+<span class="token selector">.h1</span> {
+    <span class="token selector">.small</span> {
+        <span class="token property">font-size</span>: $h1-small_fontSize;
+    }
+}</code></pre></div>    </div>                                    <div class="code-section" id="scss-prefix">
+            <div class="explanation">
+            <div>
+                <p>
+    Do not manually prefix attributes, use third party mixins as in less-hat or bourbon.scss or task runner like gulp or grunt.
+</p>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-scss"><span class="token selector">input</span> {
+    <span class="token selector">[type="text"]</span> {
+       &nbsp;<span class="token keyword">@include</span>&nbsp;<span class="token selector">box-shadow</span> (0 0 2px 3px $anthracite);
+    }
+}</code></pre></div>    </div>                                    <div class="code-section" id="scss-responsiveUsage">
+            <div class="explanation">
+            <div>
+                <h3 class="heading">Responsive usages</h3>
+
+<p>
+    Use media queries inside selector and don’t add any other selector inside the media queries, only property and values
+</p>            </div>
+        </div>
+    
+            <div class="code"><pre><code class="language-scss"><span class="token selector">.nav</span> {
+    <span class="token selector">> li</span> {
+        <span class="token selector">+ li</span> {
+            <span class="token property">margin-left</span>: 20px;
+
+            <span class="token atrule">@media</span> (<span class="token property">max-width</span>: 768px) {
+                <span class="token property">margin-left</span>: 10px;
+            }
+        }
+    }
+}</code></pre></div>    </div>                            </div>
+        </section>
+    </main>        </div>
+
+        <script src="bower_components/prism/prism.js"></script>
+    </body>
+</html>

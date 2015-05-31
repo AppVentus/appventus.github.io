@@ -1,0 +1,19 @@
+<div class="code-section" id="{{ language ~ '-' ~ title }}">
+    {% if explanation %}
+        <div class="explanation">
+            <div>
+                {% include '../sections/' ~ language ~ '/' ~ title ~ '/_explanations.html.twig' %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if code %}
+        {% spaceless %}
+            <div class="code">
+                <pre>
+                    <code class="language-{{ language }}">{% include '../sections/' ~ language ~ '/' ~ title ~ '/_code.html.twig' %}</code>
+                </pre>
+            </div>
+        {% endspaceless %}
+    {% endif %}
+</div>

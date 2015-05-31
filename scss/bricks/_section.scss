@@ -1,0 +1,28 @@
+.section {
+    background-color: $gray-lighter;
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+    padding-bottom: $grid-gutter-width;
+}
+
+.section-title {
+    padding-top: 80px;
+    font-size: 60px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: $grid-gutter-width * -1;
+    margin-right: $grid-gutter-width * -1;
+    position: relative;
+    background-color: $body-bg;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    &:before {
+        content: '';
+        background-color: $gray-lighter;
+        bottom: 0;
+        width: 100%;
+        height: $grid-gutter-width;
+        position: absolute;
+    }
+}

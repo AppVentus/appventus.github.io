@@ -1,0 +1,35 @@
+<main>
+    <section class="section" id="introduction">
+        <h1 class="section-title">
+            Introduction
+        </h1>
+
+        <div class="code-section-wrapper">
+            {% include 'skeletons/_codeSection.html.twig' with {
+                'language': 'introduction',
+                'title': 'introduction',
+                'explanation': true,
+                'code': false,
+            } %}
+        </div>
+    </section>
+
+    {% for key, items in summary %}
+        <section class="section" id="{{ key }}">
+            <h1 class="section-title">
+                {{ key }}
+            </h1>
+
+            <div class="code-section-wrapper">
+                {% for item in items %}
+                    {% include 'skeletons/_codeSection.html.twig' with {
+                        'language': key,
+                        'title': item,
+                        'explanation': true,
+                        'code': true,
+                    } %}
+                {% endfor %}
+            </div>
+        </section>
+    {% endfor %}
+</main>

@@ -1,0 +1,53 @@
+.code-section-wrapper {
+    margin: $grid-gutter-width * -1;
+    background-color: white;
+}
+
+.code-section {
+    @include display (flex);
+    z-index: 2;
+    position: relative;
+    background-color: $gray-lighter;
+
+    > * {
+        @include flex (1);
+        @include display (flex);
+        @include align-items (center);
+        padding: ($grid-gutter-width * 2) $grid-gutter-width;
+    }
+
+    .heading {
+        margin-top: 20px;
+    }
+
+    .code {
+        background-color: $gray-dark;
+    }
+
+    + .code-section {
+        margin-top: $grid-gutter-width;
+    }
+
+    pre,
+    code {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        text-shadow: none;
+        
+        &,
+        * {
+            background-color: transparent !important;
+        }
+    }
+
+    .explanation {
+        p {
+            margin-bottom: 0;
+
+            + p {
+                margin-top: 18px;
+            }
+        }
+    }
+}

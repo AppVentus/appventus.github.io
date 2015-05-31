@@ -1,0 +1,8 @@
+#header {
+    height: 50vh;
+    @include display (flex);
+    @include justify-content (center);
+    @include align-items (center);
+    background-color: $brand-danger;
+    color: white;
+}
